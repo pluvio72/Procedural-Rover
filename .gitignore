@@ -259,3 +259,15 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/Assets/Kenney/Racing Kit
+/Assets/RoverCtrl
+/Assets/SkyBoxes/Skybox Cubemap Extended
+/Assets/SmallCars
+/Assets/Standard Assets/Characters/FirstPersonCharacter
+/Library
+/ProjectSettings
+/Assets/Data Maps
+/Assets/Materials
+/Assets/ProBuilder Data
+/Assets/Scenes
+/Temp

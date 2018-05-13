@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustDrive2", "Assembly-CSharp.csproj", "{D1DD419B-C1A7-0B92-C171-EB20A22FEF2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustDrive2", "Assembly-CSharp-firstpass.csproj", "{A6B5353F-8186-A88F-BB57-2806770A3A9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustDrive2", "Assembly-CSharp-Editor.csproj", "{31507B90-EC5C-B949-2145-8280B1140458}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1DD419B-C1A7-0B92-C171-EB20A22FEF2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1DD419B-C1A7-0B92-C171-EB20A22FEF2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1DD419B-C1A7-0B92-C171-EB20A22FEF2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1DD419B-C1A7-0B92-C171-EB20A22FEF2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6B5353F-8186-A88F-BB57-2806770A3A9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6B5353F-8186-A88F-BB57-2806770A3A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6B5353F-8186-A88F-BB57-2806770A3A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6B5353F-8186-A88F-BB57-2806770A3A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31507B90-EC5C-B949-2145-8280B1140458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31507B90-EC5C-B949-2145-8280B1140458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31507B90-EC5C-B949-2145-8280B1140458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31507B90-EC5C-B949-2145-8280B1140458}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
