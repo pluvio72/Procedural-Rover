@@ -140,10 +140,10 @@ public class MapGenerator : MonoBehaviour
 	{
 		float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize + 2, mapChunkSize + 2, noiseData.seed, noiseData.noiseScale, noiseData.octaves, noiseData.persistance, noiseData.lacunarity, centre + noiseData.offset, noiseData.normalizeMode);
 
-		Color[] colourMap = new Color[mapChunkSize * mapChunkSize];
-		for (int y = 0; y < mapChunkSize; y++)
+		Color[] colourMap = new Color[(mapChunkSize+2) * (mapChunkSize+2)];
+		for (int y = 0; y < mapChunkSize + 2; y++)
 		{
-			for (int x = 0; x < mapChunkSize; x++)
+			for (int x = 0; x < mapChunkSize + 2; x++)
 			{
 				if (terrainData.useFalloffMap)
 				{
