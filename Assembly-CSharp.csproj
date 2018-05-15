@@ -64,6 +64,7 @@
     <Compile Include="Assets\RoverCtrl\scripts\Controller_Rover.cs" />
     <Compile Include="Assets\Scripts\Data\NoiseData.cs" />
     <Compile Include="Assets\Scripts\Data\TerrainData.cs" />
+    <Compile Include="Assets\Scripts\Data\TextureData.cs" />
     <Compile Include="Assets\Scripts\Data\UpdatableData.cs" />
     <Compile Include="Assets\Scripts\EndlessTerrain.cs" />
     <Compile Include="Assets\Scripts\FalloffGenerator.cs" />
@@ -75,10 +76,11 @@
     <None Include="Assets\RoverCtrl\shaders\VertexColor_detailed.shader" />
     <None Include="Assets\RoverCtrl\README\INSTRUCTION.txt" />
     <None Include="Assets\Kenney\Racing Kit\License.txt" />
-    <None Include="Assets\Scripts\Shaders\Low Poly Shader.shader" />
+    <None Include="Assets\Scripts\Shaders\S_Low Poly.shader" />
     <None Include="Assets\SkyBoxes\Skybox Cubemap Extended\Shaders\Skybox Cubemap Extended.shader" />
-    <None Include="Assets\Scripts\Shaders\Simple Flat.shader" />
-    <None Include="Assets\Scripts\Shaders\Flat Shader.shader" />
+    <None Include="Assets\Scripts\Shaders\S_Terrain.shader" />
+    <None Include="Assets\Scripts\Shaders\S_Simple Flat.shader" />
+    <None Include="Assets\Scripts\Shaders\S_Flat.shader" />
     <None Include="Assets\RoverCtrl\shaders\MegaGrunt_mobile.shader" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>C:/Users/maksj/Documents/Unity/Just_Drive_2/JustDrive2/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
