@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
-
-Shader "Custom/Flat Shader"
+﻿Shader "Custom/Flat Shader"
 {
 	Properties
 	{
@@ -91,7 +89,6 @@ Shader "Custom/Flat Shader"
 					o.pos = input[i].pos;
 					o.diffuseColor = ambientLighting + diffuseReflection;
 					o.specularColor = specularReflection;
-					//o.uv = (input[0].uv + input[1].uv + input[2].uv) / 3; 
 					o.uv = input[i].uv;
 					outputStream.Append(o);
 				}

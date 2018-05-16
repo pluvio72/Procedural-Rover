@@ -15,6 +15,7 @@
 			
 			CGPROGRAM
 			#pragma vertex vert
+			#pragma geometry geom
 			#pragma fragment frag
 
 			#pragma multi_compile_fwdbase nolightmap nodirlightmap nodynlightmap novertexlight
@@ -34,50 +35,70 @@
 			float minHeight;
 			float maxHeight;
 
-			struct v2f
-			{
-				float2 uv : TEXCOORD0;
-				float3 worldPos : TEXCOORD1;
-
-				SHADOW_COORDS(2) // put shadows data into TEXCOORD1
-				fixed3 diff : COLOR0;
-				fixed3 ambient : COLOR1;
-				float4 pos : SV_POSITION;
-			};
-
 			float inverseLerp(float a, float b, float value) {
 				return saturate((value - a) / (b - a));
 			}
-			
-			v2f vert (appdata_base v)
+
+			struct v2g
 			{
-				v2f o;
+				float2 uv : TEXCOORD0;
+				float3 worldPos : TEXCOORD1;
+				float3 vertex : TEXCOORD2;
+				float4 pos : SV_POSITION;
+			};
+
+			struct g2f {
+				float4 pos : SV_POSITION;
+				float3 worldPos : TEXCOORD0;
+				float light : TEXCOORD1;
+			};
+			
+			v2g vert (appdata_base v)
+			{
+				v2g o;
 				o.uv = v.texcoord;
 				o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 				o.pos = UnityObjectToClipPos(v.vertex);
-
-				half3 worldNormal = UnityObjectToWorldNormal(v.normal);
-				half nl = max(0, dot(worldNormal, _WorldSpaceLightPos0.xyz));
-				o.diff = nl * _LightColor0.rgb;
-				o.ambient = ShadeSH9(half4(worldNormal, 1));
-				// compute shadows data
-				TRANSFER_SHADOW(o)
+				o.vertex = v.vertex;
 				return o;
 			}
+
+			[maxvertexcount(3)]
+			void geom(triangle v2g input[3], inout TriangleStream<g2f> OutputStream) {
+				g2f o;
+
+				float3 v0 = input[0].vertex;
+				float3 v1 = input[1].vertex;
+				float3 v2 = input[2].vertex;
+
+				float3 vn = normalize(cross(v1 - v0, v2 - v0));
+				float3 normalDirection = mul(float4(vn, 0), unity_ObjectToWorld).xyz;
+
+				float3 lightdir = normalize(_WorldSpaceLightPos0.xyz);
+				float ndotl = max(0.0, dot(normalDirection, lightdir));
+
+
+				for (int i = 0; i < 3; i++)
+				{
+					o.worldPos = input[i].worldPos;
+					o.pos = input[i].pos;
+					o.light = ndotl;
+					OutputStream.Append(o);
+				}
+			}
 			
-			fixed4 frag (v2f IN) : SV_Target
+			fixed4 frag (g2f input) : SV_Target
 			{
-				fixed shadow = SHADOW_ATTENUATION(IN);
-				fixed3 lighting = IN.diff * shadow + IN.ambient;
-				float heightPercent = inverseLerp(minHeight, maxHeight, IN.worldPos.y);
+				float heightPercent = inverseLerp(minHeight, maxHeight, input.worldPos.y);
 				float3 col;
 				for (int i = 0; i < baseColorCount; i++)
 				{ 
 					float drawStrength = saturate(sign(heightPercent - baseStartHeights[i]));
 					col = col * (1-drawStrength) + drawStrength * baseColors[i], 1;
 				}
+				float4 light = input.light * _LightColor0;
 
-				return	float4(col, 1) * float4(lighting, 1);
+				return light * float4(col, 1);
 			}
 			ENDCG
 		}
