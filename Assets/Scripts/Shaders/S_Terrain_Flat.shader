@@ -1,4 +1,4 @@
-﻿Shader "Custom/S_Terrain_VF"
+﻿Shader "Custom/S_Terrain_Flat"
 {
 	Properties
 	{

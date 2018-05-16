@@ -78,6 +78,7 @@
     <None Include="Assets\Kenney\Racing Kit\License.txt" />
     <None Include="Assets\Scripts\Shaders\S_Low Poly.shader" />
     <None Include="Assets\Scripts\Shaders\S_Terrain_VF.shader" />
+    <None Include="Assets\Scripts\Shaders\S_Terrain_Flat.shader" />
     <None Include="Assets\SkyBoxes\Skybox Cubemap Extended\Shaders\Skybox Cubemap Extended.shader" />
     <None Include="Assets\Scripts\Shaders\S_Terrain.shader" />
     <None Include="Assets\Scripts\Shaders\S_Simple Flat.shader" />
