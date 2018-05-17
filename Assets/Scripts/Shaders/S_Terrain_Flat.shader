@@ -35,8 +35,16 @@
 			float minHeight;
 			float maxHeight;
 
+			float randomness;
+			sampler2D tex;
+
 			float inverseLerp(float a, float b, float value) {
 				return saturate((value - a) / (b - a));
+			}
+
+			float rand(float3 co)
+			{
+				return frac(sin(dot(co.xyz, float3(12.9898, 78.233, 45.5432))) * 43758.5453);
 			}
 
 			struct v2g
@@ -45,12 +53,15 @@
 				float3 worldPos : TEXCOORD1;
 				float3 vertex : TEXCOORD2;
 				float4 pos : SV_POSITION;
+				float4 col : COLOR0;
 			};
 
 			struct g2f {
 				float4 pos : SV_POSITION;
 				float3 worldPos : TEXCOORD0;
 				float light : TEXCOORD1;
+				float4 col : COLOR0;
+				float2 uv : TEXCOORD2;
 			};
 			
 			v2g vert (appdata_base v)
@@ -60,6 +71,17 @@
 				o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.vertex = v.vertex;
+
+				float heightPercent = inverseLerp(minHeight, maxHeight, o.worldPos.y);
+				float3 col;
+				for (int i = 0; i < baseColorCount; i++)
+				{
+					//float drawStrength = saturate(sign(heightPercent - baseStartHeights[i]));
+					float drawStrengthWithBlend = inverseLerp(-baseBlends[i] / 2 - epsilon, baseBlends[i] / 2, heightPercent - baseStartHeights[i]);
+					col = col * (1 - drawStrengthWithBlend) + drawStrengthWithBlend * baseColors[i], 1;
+				}
+				o.col = float4(col, 1);
+
 				return o;
 			}
 
@@ -76,29 +98,26 @@
 
 				float3 lightdir = normalize(_WorldSpaceLightPos0.xyz);
 				float ndotl = max(0.0, dot(normalDirection, lightdir));
+				float4 light = ndotl * _LightColor0;
 
+				float random = rand(input[1].col) * randomness + epsilon;
 
+				//o.uv = (input[0].uv, input[1].uv, input[2].uv) /3;
 				for (int i = 0; i < 3; i++)
 				{
+					o.col = input[i].col + (input[i].col * random);
 					o.worldPos = input[i].worldPos;
 					o.pos = input[i].pos;
-					o.light = ndotl;
+					o.uv = input[i].uv;
+					o.light = light;
 					OutputStream.Append(o);
 				}
 			}
 			
 			fixed4 frag (g2f input) : SV_Target
 			{
-				float heightPercent = inverseLerp(minHeight, maxHeight, input.worldPos.y);
-				float3 col;
-				for (int i = 0; i < baseColorCount; i++)
-				{ 
-					float drawStrength = saturate(sign(heightPercent - baseStartHeights[i]));
-					col = col * (1-drawStrength) + drawStrength * baseColors[i], 1;
-				}
-				float4 light = input.light * _LightColor0;
-
-				return light * float4(col, 1);
+				float4 textureSample = tex2D(tex, input.uv);
+				return (input.light * input.col) * (textureSample * 2);
 			}
 			ENDCG
 		}

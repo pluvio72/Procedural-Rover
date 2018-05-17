@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class TextureData : UpdatableData {
 
+	public int colorCount;
+
+	public Texture texture;
+	[Range(0,1.5f)]
+	public float randomness;
+
 	public Color[] baseColors;
 	[Range(0,1)]
 	public float[] baseStartHeights;
@@ -16,10 +22,12 @@ public class TextureData : UpdatableData {
 
 	public void ApplyToMaterial(Material material)
 	{
-		material.SetInt("baseColorCount", baseColors.Length);
+		material.SetInt("baseColorCount", colorCount);
 		material.SetColorArray("baseColors", baseColors);
 		material.SetFloatArray("baseStartHeights", baseStartHeights);
 		material.SetFloatArray("baseBlends", baseBlends);
+		material.SetFloat("randomness", randomness);
+		material.SetTexture("tex", texture);
 
 		UpdateMeshHeights(material, savedMinHeight, savedMaxHeight);
 	}
