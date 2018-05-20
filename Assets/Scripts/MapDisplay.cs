@@ -18,7 +18,8 @@ public class MapDisplay : MonoBehaviour {
 	{
 		meshFilter.sharedMesh = meshData.CreateMesh();
 		meshRenderer.sharedMaterial = material;
-
+		MeshCollider col = meshRenderer.GetComponentInParent(typeof(MeshCollider)) as MeshCollider;
+		col.sharedMesh = meshFilter.sharedMesh;
 		meshFilter.transform.localScale = Vector3.one * FindObjectOfType<MapGenerator>().terrainData.uniformScale;
 	}
 }

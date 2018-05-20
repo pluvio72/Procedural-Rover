@@ -100,7 +100,7 @@
 				float ndotl = max(0.0, dot(normalDirection, lightdir));
 				float4 light = ndotl * _LightColor0;
 
-				float random = rand(input[1].col) * randomness + epsilon;
+				float random = rand(input[1].col) * randomness - 1E-10;
 
 				//o.uv = (input[0].uv, input[1].uv, input[2].uv) /3;
 				for (int i = 0; i < 3; i++)
