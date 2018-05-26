@@ -276,3 +276,6 @@ __pycache__/
 /Assets/Scripts/Shaders/M_Simple Flat.mat
 /Assets/Scripts/Shaders/Textures/OrangeTexels.png
 /Assets/Assets
+/Assets/Dithering/DitheringShaders/Scripts/Editor
+/Assets/Dithering/DitheringShaders/Shaders
+/Assets/Dithering/DitheringShaders

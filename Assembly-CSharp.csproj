@@ -59,9 +59,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Dithering\DitheringShaders\Scripts\CreatePalette.cs" />
+    <Compile Include="Assets\Dithering\DitheringShaders\Scripts\DitheringEffect.cs" />
+    <Compile Include="Assets\Dithering\DitheringShaders\Scripts\DitheringEffectSimple.cs" />
     <Compile Include="Assets\Other\HideOnPlay.cs" />
     <Compile Include="Assets\Other\TestScript1.cs" />
     <Compile Include="Assets\RoverCtrl\scripts\Controller_Rover.cs" />
+    <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\Data\NoiseData.cs" />
     <Compile Include="Assets\Scripts\Data\TerrainData.cs" />
     <Compile Include="Assets\Scripts\Data\TextureData.cs" />
@@ -73,16 +77,27 @@
     <Compile Include="Assets\Scripts\MeshGenerator.cs" />
     <Compile Include="Assets\Scripts\Noise.cs" />
     <Compile Include="Assets\Scripts\TextureGenerator.cs" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\Cutout-Unlit.shader" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\Cutout-Diffuse.shader" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\Normal-UnlitSimple.shader" />
     <None Include="Assets\RoverCtrl\shaders\VertexColor_detailed.shader" />
     <None Include="Assets\RoverCtrl\README\INSTRUCTION.txt" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\Normal-Unlit.shader" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\Cutout-UnlitSimple.shader" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\CGIncludes\Dithering.cginc" />
     <None Include="Assets\Kenney\Racing Kit\License.txt" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\Cutout-DiffuseSimple.shader" />
     <None Include="Assets\Scripts\Shaders\S_Low Poly.shader" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\Normal-DiffuseSimple.shader" />
     <None Include="Assets\Scripts\Shaders\S_Terrain_VF.shader" />
     <None Include="Assets\Scripts\Shaders\S_Terrain_Flat.shader" />
     <None Include="Assets\SkyBoxes\Skybox Cubemap Extended\Shaders\Skybox Cubemap Extended.shader" />
     <None Include="Assets\Scripts\Shaders\S_Terrain.shader" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\Normal-Diffuse.shader" />
     <None Include="Assets\Scripts\Shaders\S_Simple Flat.shader" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\ImageFx-DiffuseSimple.shader" />
     <None Include="Assets\Scripts\Shaders\S_Flat.shader" />
+    <None Include="Assets\Dithering\DitheringShaders\Shaders\ImageFx-Diffuse.shader" />
     <None Include="Assets\RoverCtrl\shaders\MegaGrunt_mobile.shader" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>C:/Users/maksj/Documents/Unity/Just_Drive_2/JustDrive2/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
